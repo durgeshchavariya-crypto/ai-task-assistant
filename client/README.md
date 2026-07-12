@@ -1,16 +1,85 @@
-# React + Vite
+# AI Task Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack task management application with an AI assistant that helps users manage, summarize, and get suggestions about their tasks — built with secure authentication, persistent database storage, and real-time AI integration.
 
-Currently, two official plugins are available:
+## 🔗 Live Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend (Vercel):** https://ai-task-assistant-2kx70hn6h-durgesh-chavariya.vercel.app
+- **Backend API (Render):** https://ai-task-assistant-backend.onrender.com
+- **GitHub Repo:** https://github.com/durgeshchavariya-crypto/ai-task-assistant
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **User Authentication:** Register/login with JWT-based sessions (access + refresh tokens), passwords hashed with bcrypt
+- **Task Management:** Full CRUD operations — create, view, update (mark complete), and delete tasks, each scoped to the logged-in user
+- **AI Chat Assistant:** Conversational interface where users can ask questions about their tasks; the AI is fed the user's real, current task list as context before responding
+- **Protected Routes:** Dashboard and chat views require authentication; expired tokens automatically redirect to login
+- **Responsive Design:** Clean, mobile-friendly layout across all pages
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Frontend:**
+- React (Vite)
+- React Router (client-side routing)
+- React Query (server state management, caching)
+- Axios (HTTP client with auth interceptors)
+- Context API (global auth state)
+
+**Backend:**
+- Node.js + Express
+- Prisma ORM + SQLite (database)
+- bcrypt (password hashing)
+- jsonwebtoken (JWT auth)
+- Groq API (AI chat, Llama models — used as a free substitute for OpenAI/Gemini due to billing requirements)
+
+**Deployment:**
+- Vercel (frontend)
+- Render (backend + database)
+- GitHub Actions (CI: lint → build)
+
+## Project Structure
+
+```
+ai-task-assistant/
+├── client/              # React frontend
+│   └── src/
+│       ├── api/         # Axios client with auth interceptors
+│       ├── context/     # Auth context
+│       └── pages/       # Login, Register, Dashboard, Chat
+├── server/              # Express backend
+│   ├── prisma/          # Schema and migrations
+│   └── index.js         # All API routes
+├── docs/                # Wireframes, schema diagram, API docs
+└── README.md
+```
+
+## API Endpoints
+
+See [`docs/api-endpoints.md`](docs/api-endpoints.md) for the full list of routes, methods, and auth requirements.
+
+## Local Setup
+
+**Backend:**
+```bash
+cd server
+npm install
+npx prisma migrate dev
+node index.js
+```
+
+**Frontend:**
+```bash
+cd client
+npm install
+npm run dev
+```
+
+Both require a `.env` file (see `.env.example` pattern: `DATABASE_URL`, `GROQ_API_KEY`, `JWT_SECRET`, `JWT_REFRESH_SECRET` for server; `VITE_API_URL` for client).
+
+## Screenshots / Wireframes
+
+See [`docs/wireframes/`](docs/wireframes) for planning sketches and [`docs/schema.png`](docs/schema.png) for the database schema diagram.
+
+## Status
+
+✅ Fully deployed and functional — frontend, backend, and database all live in production.
