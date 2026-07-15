@@ -1,0 +1,629 @@
+.dash-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Navbar */
+.dash-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-premium);
+}
+
+.dash-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dash-nav-logo svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--accent-purple);
+  fill: none;
+}
+
+.dash-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* User profile avatar details */
+.dash-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px 6px 6px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-glass);
+}
+
+.dash-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.dash-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Action button stylings */
+.dash-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: 1px solid var(--border-glass);
+}
+
+.dash-btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);
+}
+
+.dash-btn-primary:hover {
+  background: var(--btn-gradient-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.25);
+}
+
+.dash-btn-secondary {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+}
+
+.dash-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-glass-active);
+  transform: translateY(-1px);
+}
+
+.dash-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Statistics section */
+.dash-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .dash-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dash-stat-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.dash-stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+}
+
+.dash-stat-card.purple::after {
+  background: var(--accent-purple);
+}
+
+.dash-stat-card.blue::after {
+  background: var(--accent-blue);
+}
+
+.dash-stat-card.green::after {
+  background: var(--accent-green);
+}
+
+.dash-stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.dash-stat-value-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.dash-stat-value {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dash-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-stat-card.purple .dash-stat-icon {
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--accent-purple);
+}
+
+.dash-stat-card.blue .dash-stat-icon {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--accent-blue);
+}
+
+.dash-stat-card.green .dash-stat-icon {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--accent-green);
+}
+
+.dash-stat-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Progress bar inside green stat card */
+.dash-progress-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.dash-progress-fill {
+  height: 100%;
+  background: var(--accent-green);
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Task Form Section */
+.dash-form-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dash-form {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 576px) {
+  .dash-form {
+    flex-direction: column;
+  }
+}
+
+.dash-input-container {
+  flex: 1;
+  position: relative;
+}
+
+.dash-input-premium {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.dash-input-premium:focus {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.08);
+}
+
+.dash-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.dash-input-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.dash-input-premium:focus ~ .dash-input-icon {
+  color: var(--accent-purple);
+}
+
+/* Search and Filters */
+.dash-filters-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dash-search-container {
+  position: relative;
+  min-width: 240px;
+  flex: 1;
+}
+
+.dash-search-input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.dash-search-input:focus {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent-blue);
+}
+
+.dash-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.dash-search-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.dash-search-input:focus ~ .dash-search-icon {
+  color: var(--accent-blue);
+}
+
+/* Segmented Control Filter Buttons */
+.dash-filter-group {
+  display: flex;
+  padding: 3px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-glass);
+}
+
+.dash-filter-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.dash-filter-btn:hover {
+  color: var(--text-primary);
+}
+
+.dash-filter-btn.active {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tasks list container */
+.dash-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual task card */
+.dash-task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-smooth);
+  animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dash-task-item:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glass-active);
+  transform: translateY(-2px);
+}
+
+.dash-task-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+/* Premium Checkbox implementation */
+.dash-checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dash-checkbox-hidden {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.dash-checkbox-custom {
+  height: 22px;
+  width: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.dash-checkbox-wrapper:hover .dash-checkbox-custom {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.dash-checkbox-wrapper.completed .dash-checkbox-custom {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
+.dash-checkbox-custom svg {
+  width: 14px;
+  height: 14px;
+  stroke: white;
+  stroke-width: 3.5;
+  fill: none;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 0.25s ease-out;
+}
+
+.dash-checkbox-wrapper.completed .dash-checkbox-custom svg {
+  stroke-dashoffset: 0;
+}
+
+/* Task Title Text styling */
+.dash-task-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  text-align: left;
+}
+
+.dash-checkbox-wrapper.completed ~ .dash-task-title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Badges */
+.dash-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.dash-badge-pending {
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--accent-purple);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.dash-badge-completed {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--accent-green);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+/* Delete Action Button */
+.dash-task-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-delete-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.dash-delete-btn:hover {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose);
+  transform: scale(1.05);
+}
+
+.dash-delete-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Empty states */
+.dash-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-premium);
+  text-align: center;
+  gap: 18px;
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dash-empty-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--accent-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-empty-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.dash-empty-state h3 {
+  font-size: 18px;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.dash-empty-state p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+/* Loading animations */
+.dash-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 16px;
+  color: var(--text-secondary);
+}
+
+.dash-loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(168, 85, 247, 0.1);
+  border-top-color: var(--accent-purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.05);
+}

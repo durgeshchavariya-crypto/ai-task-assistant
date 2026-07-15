@@ -7,7 +7,12 @@ const OpenAI = require("openai");
 const { PrismaClient } = require("@prisma/client");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const prisma = new PrismaClient();
@@ -209,6 +214,6 @@ app.get("/", (req, res) => {
   res.send("AI Task Assistant backend is running");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, "127.0.0.1", () => {
+  console.log(`Server running on http://127.0.0.1:${PORT}`);
 });

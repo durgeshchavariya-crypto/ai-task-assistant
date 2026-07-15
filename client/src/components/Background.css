@@ -1,0 +1,151 @@
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  pointer-events: none;
+}
+
+/* Futuristic grid pattern */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+  mask-image: radial-gradient(circle 50% at 50% 50%, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 50% at 50% 50%, black 60%, transparent 100%);
+  opacity: 0.85;
+}
+
+/* Glowing blobs styling */
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.16;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.blob-purple {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, transparent 70%);
+  top: -100px;
+  left: 10%;
+  animation: float-blob-1 25s infinite alternate ease-in-out;
+}
+
+.blob-blue {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+  bottom: -150px;
+  right: 15%;
+  animation: float-blob-2 30s infinite alternate ease-in-out;
+}
+
+.blob-cyan {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.8) 0%, transparent 70%);
+  top: 30%;
+  right: 10%;
+  animation: float-blob-3 20s infinite alternate ease-in-out;
+}
+
+/* Light beams */
+.bg-beam {
+  position: absolute;
+  top: -10%;
+  width: 1.5px;
+  height: 120%;
+  background: linear-gradient(180deg, transparent 0%, rgba(168, 85, 247, 0.25) 30%, rgba(59, 130, 246, 0.25) 70%, transparent 100%);
+  opacity: 0.2;
+}
+
+.beam-left {
+  left: 20%;
+  transform: rotate(15deg);
+}
+
+.beam-right {
+  right: 25%;
+  transform: rotate(-15deg);
+}
+
+/* GPU cursor glow details */
+.bg-cursor-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(59, 130, 246, 0.04) 40%, transparent 70%);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: transform;
+}
+
+/* Floating particles Canvas */
+.bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+/* Vignette border cover */
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 70% at 50% 50%, transparent 30%, rgba(7, 6, 15, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Keyframe animations for background blobs */
+@keyframes float-blob-1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(80px, 60px, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(-40px, 120px, 0) scale(0.95);
+  }
+}
+
+@keyframes float-blob-2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-100px, -50px, 0) scale(0.9);
+  }
+  100% {
+    transform: translate3d(60px, 40px, 0) scale(1.05);
+  }
+}
+
+@keyframes float-blob-3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(50px, -80px, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-60px, 40px, 0) scale(0.9);
+  }
+}
